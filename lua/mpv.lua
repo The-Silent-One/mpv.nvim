@@ -6,16 +6,17 @@ local state = {
 
 M.play_song = function(query, title)
 	if not state.playing then
-		local filename = string.format("./videos/%s.mkv", title)
-		local localfile = vim.api.nvim_get_runtime_file(filename, false)[1]
+		local filename = title .. ".mkv"
+		local localfolder = vim.api.nvim_get_runtime_file("./videos/", false)[1]
+		local localfile = localfolder .. filename
 		local command = {}
-		if localfile then
+		if vim.api.nvim_get_runtime_file("./videos/" .. filename, false)[1] then
 			command = {
 				"mpv",
 				string.format("--title=%s", title),
 				"--geometry=15%+100%+5",
 				"--ontop",
-				filename,
+				localfile,
 			}
 		else
 			command = {
@@ -23,7 +24,7 @@ M.play_song = function(query, title)
 				string.format("--title=%s", title),
 				"--geometry=15%+100%+5",
 				"--ontop",
-				string.format("--record-file=%s", filename),
+				string.format("--stream-record=%s", localfile),
 				query,
 			}
 		end
@@ -36,17 +37,5 @@ M.play_song = function(query, title)
 		state.playing = true
 	end
 end
-
-vim.api.nvim_create_user_command("Pedro", function()
-	M.play_song("https://youtu.be/F2YpXC1itEE", "Pedro")
-end, { desc = "Pedro" })
-
-vim.api.nvim_create_user_command("Lich", function()
-	M.play_song("https://youtu.be/Uh80C5cmkXU", "Lich")
-end, { desc = "Lich" })
-
-vim.keymap.set("n", "<leader>W", function()
-	M.play_song("https://youtu.be/dQw4w9WgXcQ", "Rickroll")
-end, {})
 
 return M
