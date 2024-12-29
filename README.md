@@ -32,7 +32,7 @@ DISCLAIMER: I am not held reliable for your custom shortcuts, it's on you.
 
 ## Installation
 
-You need to install mpv player and [ytdl] (https://github.com/ytdl-org/youtube-dl) first.
+You need to install mpv player and [ytdl](https://github.com/ytdl-org/youtube-dl) first.
 
 Add the plugin to your lua file like this:
 

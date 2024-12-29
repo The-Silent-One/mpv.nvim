@@ -5,6 +5,9 @@ local state = {
 }
 
 M.play_song = function(query, title, save)
+	if save == nil then
+		save = false
+	end
 	if not state.playing then
 		local filename = title .. ".mkv"
 		local localfolder = vim.api.nvim_get_runtime_file("./videos/", false)[1]
@@ -24,7 +27,7 @@ M.play_song = function(query, title, save)
 				string.format("--title=%s", title),
 				"--geometry=15%+100%+5",
 				"--ontop",
-				{ save or true } and string.format("--stream-record=%s", localfile) or "",
+				save and string.format("--stream-record=%s", localfile) or "",
 				query,
 			}
 		end
