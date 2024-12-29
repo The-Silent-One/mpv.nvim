@@ -29,6 +29,8 @@ This plugin is mainly for fun reactions while coding, not made for watching long
 
 DISCLAIMER: I am not held reliable for your custom shortcuts, it's on you.
 
+https://github.com/user-attachments/assets/2ef39eb7-bf0c-4072-8798-ba7a2935f31a
+
 
 ## Installation
 
